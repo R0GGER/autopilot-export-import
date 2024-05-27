@@ -1,3 +1,6 @@
+# START
+Powershell Set-ExecutionPolicy Unrestricted
+
 $Serialnumber = (Get-CimInstance -Class Win32_BIOS).SerialNumber
 $date = Get-Date -Format yyyyMMdd
 $Path = ($MyInvocation.MyCommand.Path -replace $MyInvocation.MyCommand.Name, "") + "AutoPilot-Export\"  
@@ -23,3 +26,7 @@ if (!(Test-Path -Path $FullPath)) {
 else {
     $output | Export-Csv -LiteralPath $FullPath -Delimiter "," -Encoding utf8 -Force -Append
 }
+
+# END
+Powershell Set-ExecutionPolicy restricted
+Get-ExecutionPolicy
