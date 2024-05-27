@@ -1,1 +1,2 @@
 Powershell Set-ExecutionPolicy restricted
+Powershell Get-ExecutionPolicy
