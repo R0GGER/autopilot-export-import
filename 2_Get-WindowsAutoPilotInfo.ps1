@@ -1,10 +1,9 @@
 $Serialnumber = (Get-CimInstance -Class Win32_BIOS).SerialNumber
-$date = Get-Date -Format yyyyMMdd
 $Path = ($MyInvocation.MyCommand.Path -replace $MyInvocation.MyCommand.Name, "") + "AutoPilot-Export\"  
 if (!(Test-Path $Path)) {
     New-Item -ItemType Directory -Path $Path
 }
-$FileName = $date + "_Autopilot_Export.csv"
+$FileName = $Serialnumber + "_Autopilot_Export.csv"
 $FullPath = $Path + $FileName
 
 # HardwareHash
