@@ -4,7 +4,3 @@
 1. SHIFT + F10
 2. Typ: "D:\" (usb-stick drive letter)
 3. Enter command: "1.cmd" (Run as Administrator).
-4. Enter command: "powershell"
-5. Enter command: ".\2_Get-WindowsAutoPilotInfo.ps1"
-6. Enter command: "cmd"
-7. Enter command: "3.cmd" (Run as Administrator).
