@@ -1,8 +1,10 @@
-Serial number, Windows product ID, hardware hash
-SHIFT + F10
-D:\ (usb-stick drive letter)
-Run 1.cmd (Run as Administrator).
-powershell
-.\2_Get-WindowsAutoPilotInfo.ps1.
-cmd
-run 3.cmd (Run as Administrator).
+# Serial number, Windows product ID, hardware hash
+----------------------------------------------------
+
+1. SHIFT + F10
+2. Typ: "D:\" (usb-stick drive letter)
+3. Enter command: "1.cmd" (Run as Administrator).
+4. Enter command: "powershell"
+5. Enter command: ".\2_Get-WindowsAutoPilotInfo.ps1"
+6. Enter command: "cmd"
+7. Enter command: "3.cmd" (Run as Administrator).
