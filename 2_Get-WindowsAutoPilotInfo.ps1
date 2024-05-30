@@ -1,24 +1,11 @@
 $Serialnumber = (Get-CimInstance -Class Win32_BIOS).SerialNumber
-$Path = ($MyInvocation.MyCommand.Path -replace $MyInvocation.MyCommand.Name, "") + "AutoPilot-Export\"  
-if (!(Test-Path $Path)) {
-    New-Item -ItemType Directory -Path $Path
-}
-$FileName = $Serialnumber + "_Autopilot_Export.csv"
-$FullPath = $Path + $FileName
-
-# HardwareHash
+$FileName = $Serialnumber + "_export.csv"
 $HardwareHash = (Get-CimInstance -Namespace root/CIMV2/mdm/dmmap -ClassName MDM_DevDetail_Ext01).DeviceHardwareData
 
-# Create CSV
 $output = [PSCustomObject]@{
     "Device Serial Number" = $Serialnumber;
     "Windows Product ID"   = "";
     "Hardware Hash"        = $HardwareHash
 } 
 
-if (!(Test-Path -Path $FullPath)) {
-    $output | convertto-csv -LiteralPath $FullPath -Delimiter "," -Encoding utf8 -Force -NoTypeInformation | % {$_ -replace '"',''}
-}
-else {
-    $output | convertto-csv -LiteralPath $FullPath -Delimiter "," -Encoding utf8 -Force -Append | % {$_ -replace '"',''}
-}
+$output | convertto-csv -NoTypeInformation -Delimiter "," | % {$_ -replace '"',''} | Out-File $FileName
