@@ -17,8 +17,8 @@ $output = [PSCustomObject]@{
 } 
 
 if (!(Test-Path -Path $FullPath)) {
-    $output | Export-Csv -LiteralPath $FullPath -Delimiter "," -Encoding utf8 -Force -NoTypeInformation | % {$_ -replace '"',''} 
+    $output | Export-Csv -LiteralPath $FullPath -Delimiter "," -Encoding utf8 -Force -NoTypeInformation 
 }
 else {
-    $output | Export-Csv -LiteralPath $FullPath -Delimiter "," -Encoding utf8 -Force -Append | % {$_ -replace '"',''} 
+    $output | Export-Csv -LiteralPath $FullPath -Delimiter "," -Encoding utf8 -Force -Append 
 }
